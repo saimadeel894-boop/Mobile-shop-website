@@ -4,17 +4,17 @@ const categories = [
   {
     name: "Iphones",
     link: "/category/iphone",
-    image: "https://yaphones.shop/wp-content/uploads/2024/11/iPhone-16-Pro-Max-Desert-Titanium-1.webp",
+    image: "https://yaphones.shop/wp-content/uploads/2025/11/33cfc21b2279781656ad20f048207cb2.jpg",
   },
   {
     name: "Samsung",
     link: "/category/samsung",
-    image: "https://yaphones.shop/wp-content/uploads/2024/11/S24-Ultra-1.webp",
+    image: "https://yaphones.shop/wp-content/uploads/2025/11/d3a201688435a25ea5516a51498fcfbf.jpg",
   },
   {
     name: "Google Pixel",
     link: "/category/pixel",
-    image: "https://yaphones.shop/wp-content/uploads/2024/12/Google-pixel-9-pro-1.webp",
+    image: "https://yaphones.shop/wp-content/uploads/2025/11/google-2023-1.jpg",
   },
 ];
 
@@ -30,15 +30,16 @@ const ProductCategories = () => {
             <Link
               key={cat.name}
               to={cat.link}
-              className="relative group rounded-xl overflow-hidden aspect-[4/3] bg-ya-dark flex items-center justify-center"
+              className="relative group rounded-xl overflow-hidden aspect-[4/3] bg-ya-dark"
             >
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="absolute inset-0 w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-300"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-ya-navy/60" />
-              <div className="relative z-10 text-center">
+              <div className="absolute inset-0 bg-ya-navy/40 group-hover:bg-ya-navy/50 transition-colors" />
+              <div className="relative z-10 flex flex-col items-center justify-center h-full">
                 <h3 className="text-2xl font-bold text-primary-foreground mb-2">{cat.name}</h3>
                 <span className="text-sm text-primary-foreground/80 underline">View more</span>
               </div>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Search, User, Heart, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
-import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Home", path: "/" },
@@ -46,11 +45,12 @@ const Header = () => {
       {/* Main header */}
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="bg-ya-blue rounded-lg p-1.5">
-            <span className="text-xl font-black text-primary-foreground">YP</span>
-          </div>
-          <span className="text-lg font-bold hidden sm:block">YA PHONES</span>
+        <Link to="/" className="flex items-center">
+          <img
+            src="https://yaphones.shop/wp-content/uploads/2021/02/WhatsApp_Image_2025-10-16_at_01.03.39_fafd1217-removebg-preview-e1762945705759.png"
+            alt="YA PHONES"
+            className="h-12 w-auto"
+          />
         </Link>
 
         {/* Search */}
@@ -111,13 +111,16 @@ const Header = () => {
       <nav className="bg-ya-navy border-t border-border/10">
         <div className="container mx-auto px-4">
           <ul className="hidden md:flex items-center gap-0">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <li
                 key={item.label}
-                className="relative group"
+                className="relative group flex items-center"
                 onMouseEnter={() => item.children && setOpenDropdown(item.label)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
+                {index > 0 && (
+                  <span className="text-border/30 text-lg">|</span>
+                )}
                 <Link
                   to={item.path}
                   className={`flex items-center gap-1 px-4 py-3 text-sm font-medium hover:text-ya-blue transition-colors ${
@@ -127,9 +130,6 @@ const Header = () => {
                   {item.label}
                   {item.children && <ChevronDown className="h-3 w-3" />}
                 </Link>
-                {item.children && (
-                  <span className="mx-0 text-border/30">|</span>
-                )}
                 {item.children && openDropdown === item.label && (
                   <div className="absolute top-full left-0 bg-ya-dark border border-border/20 rounded-md shadow-lg min-w-48 z-50">
                     {item.children.map((child) => (

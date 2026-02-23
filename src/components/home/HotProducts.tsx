@@ -11,7 +11,8 @@ const HotProducts = () => {
     <section className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-foreground mb-2">Hot Products</h2>
-        <div className="w-16 h-1 bg-ya-blue mx-auto mb-8" />
+        <div className="w-16 h-1 bg-ya-blue mx-auto mb-2" />
+        <p className="text-center text-muted-foreground mb-8">You can see more categories in the navigation bar.</p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {products.map((product) => (
@@ -21,7 +22,7 @@ const HotProducts = () => {
             >
               <div className="relative aspect-square bg-secondary/50 flex items-center justify-center p-4">
                 {product.isSale && (
-                  <span className="absolute top-2 left-2 bg-ya-blue text-primary-foreground text-xs font-bold px-2 py-0.5 rounded">
+                  <span className="absolute top-2 left-2 bg-ya-blue text-primary-foreground text-xs font-bold px-2 py-0.5 rounded z-10">
                     Sale!
                   </span>
                 )}
@@ -75,12 +76,18 @@ const HotProducts = () => {
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-8 flex items-center justify-center gap-4">
           <Link
             to="/shop"
             className="inline-block bg-ya-blue text-primary-foreground px-6 py-2.5 rounded text-sm font-semibold hover:bg-ya-blue-light transition-colors"
           >
-            Show All Products
+            Show All
+          </Link>
+          <Link
+            to="/shop"
+            className="inline-block border border-ya-blue text-ya-blue px-6 py-2.5 rounded text-sm font-semibold hover:bg-ya-blue hover:text-primary-foreground transition-colors"
+          >
+            All Products
           </Link>
         </div>
       </div>
