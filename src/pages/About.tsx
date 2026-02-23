@@ -9,7 +9,7 @@ const About = () => {
           <div className="w-16 h-1 bg-ya-blue mx-auto mb-8" />
           <div className="prose prose-lg max-w-none text-muted-foreground">
             <p>
-              YA Phones Group, founded in 1997, is headquartered in Shenzhen, China. With over 25 years of experience in the mobile phone industry, we have established ourselves as a leading wholesale and retail provider of new and used smartphones.
+              Apex Grade Phones Group, founded in 1997, is headquartered in Shenzhen, China. With over 25 years of experience in the mobile phone industry, we have established ourselves as a leading wholesale and retail provider of new and used smartphones.
             </p>
             <p>
               Our product range includes the latest iPhones, Samsung Galaxy devices, and Google Pixel phones. We offer both brand new and certified pre-owned devices at factory-direct pricing, ensuring our customers always get the best value.

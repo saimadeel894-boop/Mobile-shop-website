@@ -13,7 +13,7 @@ const WhoWeAre = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-foreground mb-2">Who we are</h2>
         <div className="w-16 h-1 bg-ya-blue mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-center text-foreground mb-6">YA PHONES GROUP</h3>
+        <h3 className="text-2xl font-bold text-center text-foreground mb-6">APEX GRADE PHONES GROUP</h3>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
@@ -21,7 +21,7 @@ const WhoWeAre = () => {
               Tech is everywhere, so are we.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              About YAPHONES Group: Yaphones Company was founded in May 1997. It is a group company, Founded by a group of high-tech personnel in Shenzhen, China. Yaphones Electronics Limited (Yaphone Group Subsidiary) It was established in Hong Kong Special Administrative Region of China on October 24, 2006. It is composed of engineers who specialize in software and hardware development. Our company specializes in the design and production of mobile phones, Bluetooth and digital products, GPS/CAR DVR.
+              About Apex Grade Phones Group: Apex Grade Phones Company was founded in May 1997. It is a group company, Founded by a group of high-tech personnel in Shenzhen, China. Apex Grade Electronics Limited (Apex Grade Group Subsidiary) It was established in Hong Kong Special Administrative Region of China on October 24, 2006. It is composed of engineers who specialize in software and hardware development. Our company specializes in the design and production of mobile phones, Bluetooth and digital products, GPS/CAR DVR.
             </p>
             <Link
               to="/about"
@@ -34,7 +34,7 @@ const WhoWeAre = () => {
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/_-ro1UUFKOk"
-              title="YA Phones Introduction"
+              title="Apex Grade Phones Introduction"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

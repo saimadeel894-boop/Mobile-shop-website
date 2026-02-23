@@ -6,10 +6,10 @@ const ContactBar = () => {
       {/* Second marquee bar */}
       <div className="bg-ya-dark text-primary-foreground py-1.5 overflow-hidden whitespace-nowrap border-b border-border/10">
         <div className="animate-marquee inline-block">
-          <span className="mx-4 text-sm">| Factory-Direct Smartphones-Save More with Yaphones |</span>
+          <span className="mx-4 text-sm">| Factory-Direct Smartphones-Save More with Apex Grade |</span>
           <span className="mx-4 text-sm">New year Cheer: Flat 20% OFF — Until 31/01/26 use "NEWYEAR2026" at checkout! |</span>
           <span className="mx-4 text-sm">iPhones, Samsung & Pixel — Cheapest Factory Pricing |</span>
-          <span className="mx-4 text-sm">| Factory-Direct Smartphones-Save More with Yaphones |</span>
+          <span className="mx-4 text-sm">| Factory-Direct Smartphones-Save More with Apex Grade |</span>
           <span className="mx-4 text-sm">New year Cheer: Flat 20% OFF — Until 31/01/26 use "NEWYEAR2026" at checkout! |</span>
           <span className="mx-4 text-sm">iPhones, Samsung & Pixel — Cheapest Factory Pricing |</span>
         </div>
@@ -25,11 +25,11 @@ const ContactBar = () => {
                 <div className="text-xs text-muted-foreground">+1 (332) 2637184</div>
               </div>
             </a>
-            <a href="mailto:support@yaphones.shop" className="flex items-center gap-2 hover:text-ya-blue-light transition-colors">
+          <a href="mailto:support@apexgradephones.com" className="flex items-center gap-2 hover:text-ya-blue-light transition-colors">
               <Mail className="h-5 w-5 text-ya-blue" />
               <div>
                 <div className="text-sm font-semibold">E-mail</div>
-                <div className="text-xs text-muted-foreground">support@yaphones.shop</div>
+                <div className="text-xs text-muted-foreground">support@apexgradephones.com</div>
               </div>
             </a>
           </div>
