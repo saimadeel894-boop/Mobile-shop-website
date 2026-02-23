@@ -1,9 +1,10 @@
+import staff1 from "@/assets/staff-1.jpeg";
+import staff2 from "@/assets/staff-2.jpeg";
+import staffTeam from "@/assets/staff-team.jpeg";
+
 const team = [
-  { name: "Leila Yu.", title: "", image: "https://yaphones.shop/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-16-at-01.03.43_ffd2e924-e1763227028850.jpg" },
-  { name: "Benny Wu", title: "", image: "https://yaphones.shop/wp-content/uploads/2025/11/6bae6e2a308007596152329c931d6291.jpeg" },
-  { name: "wendy liu", title: "", image: "https://yaphones.shop/wp-content/uploads/2025/11/9c7cfbac79fcf703ca2272b98db4621a.jpg" },
-  { name: "charles Zhang", title: "", image: "https://yaphones.shop/wp-content/uploads/2025/11/ee5ded528e2abb3b11fc0e907a5614cc.jpg" },
-  { name: "Sunny Liu", title: "", image: "https://yaphones.shop/wp-content/uploads/2025/11/e87b0376a0da493000ca3b316395ea26.jpg" },
+  { name: "Leila Yu", title: "Operations Manager", image: staff1 },
+  { name: "Benny Wu", title: "Sales Director", image: staff2 },
 ];
 
 const OurTeam = () => {
@@ -12,10 +13,10 @@ const OurTeam = () => {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-foreground mb-2">Our Team</h2>
         <div className="w-16 h-1 bg-ya-blue mx-auto mb-2" />
-        <p className="text-center text-muted-foreground mb-8">This is our team, we are pleasure to serve you!</p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <p className="text-center text-muted-foreground mb-8">This is our team, we are pleased to serve you!</p>
+        <div className="flex justify-center gap-6 mb-8">
           {team.map((member) => (
-            <div key={member.name} className="text-center group">
+            <div key={member.name} className="text-center group w-48">
               <div className="aspect-square rounded-xl overflow-hidden bg-secondary mb-3">
                 <img
                   src={member.image}
@@ -25,9 +26,17 @@ const OurTeam = () => {
                 />
               </div>
               <h3 className="font-semibold text-foreground">{member.name}</h3>
-              {member.title && <p className="text-sm text-muted-foreground">{member.title}</p>}
+              <p className="text-sm text-muted-foreground">{member.title}</p>
             </div>
           ))}
+        </div>
+        <div className="max-w-3xl mx-auto rounded-xl overflow-hidden">
+          <img
+            src={staffTeam}
+            alt="Apex Grade Phones Team"
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

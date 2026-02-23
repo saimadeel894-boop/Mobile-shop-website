@@ -2,23 +2,9 @@ import Layout from "@/components/layout/Layout";
 import { MapPin, MessageCircle, Mail } from "lucide-react";
 
 const contactCards = [
-  {
-    icon: MapPin,
-    title: "Address",
-    details: "Shenzhen, Guangdong, China",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    details: "+1 (332) 2637184",
-    link: "https://wa.me/13322637184",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    details: "support@yaphones.shop",
-    link: "mailto:support@yaphones.shop",
-  },
+  { icon: MapPin, title: "Address", details: "Shenzhen, Guangdong, China" },
+  { icon: MessageCircle, title: "WhatsApp", details: "+1 (332) 2637184", link: "https://wa.me/13322637184" },
+  { icon: Mail, title: "Email", details: "support@apexgradephones.com", link: "mailto:support@apexgradephones.com" },
 ];
 
 const Contact = () => {
