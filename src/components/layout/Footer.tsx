@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Music } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,32 +8,23 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Profile */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Company Profile</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              YA Phones Group, founded in 1997, is headquartered in Shenzhen, China. We specialize in wholesale and retail of new and used smartphones.
-            </p>
-            <div className="flex gap-3 mt-4">
-              <a href="#" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors">
-                <Facebook className="h-4 w-4" />
-              </a>
-              <a href="#" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors">
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a href="#" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors">
-                <Music className="h-4 w-4" />
-              </a>
-            </div>
+            <h3 className="text-lg font-bold mb-4">Comany Profile</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/about" className="hover:text-ya-blue transition-colors">Who we are</Link></li>
+              <li><Link to="/contact" className="hover:text-ya-blue transition-colors">Contact Us</Link></li>
+              <li>Phone : +1 (332) 2637184</li>
+              <li>Email: support@yaphones.shop</li>
+              <li>Address :Feiyang Times Building, Huafa South Road, Futian District, Shenzhen, Guangdong Province, China. Postcode: 518039</li>
+            </ul>
           </div>
 
           {/* Service & Support */}
           <div>
             <h3 className="text-lg font-bold mb-4">Service & Support</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/contact" className="hover:text-ya-blue transition-colors">Contact Us</Link></li>
-              <li><Link to="/about" className="hover:text-ya-blue transition-colors">About Us</Link></li>
-              <li><a href="#" className="hover:text-ya-blue transition-colors">FAQ</a></li>
               <li><a href="#" className="hover:text-ya-blue transition-colors">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-ya-blue transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-ya-blue transition-colors">FAQ</a></li>
+              <li><a href="#" className="hover:text-ya-blue transition-colors">Bulk phone renewal/refurbishment services</a></li>
             </ul>
           </div>
 
@@ -41,39 +32,51 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Orders & Deliveries</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-ya-blue transition-colors">Shipping Information</a></li>
-              <li><a href="#" className="hover:text-ya-blue transition-colors">Returns & Refunds</a></li>
-              <li><a href="#" className="hover:text-ya-blue transition-colors">Order Tracking</a></li>
-              <li><a href="#" className="hover:text-ya-blue transition-colors">Warranty Policy</a></li>
+              <li><a href="#" className="hover:text-ya-blue transition-colors">Shipping & Handling</a></li>
+              <li><a href="#" className="hover:text-ya-blue transition-colors">Warranty & Returns</a></li>
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter & Social */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Newsletter</h3>
-            <p className="text-sm text-muted-foreground mb-4">Subscribe to get special offers and updates.</p>
-            <div className="flex gap-2">
+            <h3 className="text-lg font-bold mb-4">Subscribe to Our Newsletter :</h3>
+            <p className="text-sm text-muted-foreground mb-4">Would you like to receive occasional info on products and offers?</p>
+            <div className="flex gap-2 mb-6">
               <input
                 type="email"
-                placeholder="Your email"
+                placeholder="Email"
                 className="flex-1 px-3 py-2 rounded bg-ya-dark text-primary-foreground text-sm border border-border/20 outline-none focus:border-ya-blue"
               />
               <button className="bg-ya-blue px-4 py-2 rounded text-sm font-medium hover:bg-ya-blue-light transition-colors">
-                Subscribe
+                Submit
               </button>
+            </div>
+            <h4 className="text-sm font-bold mb-3">Social Icons :</h4>
+            <div className="flex gap-3">
+              <a href="#" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors">
+                <Facebook className="h-4 w-4" />
+              </a>
+              <a href="#" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors">
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://www.tiktok.com/@yaphones_retail" className="bg-ya-blue rounded-full p-2 hover:bg-ya-blue-light transition-colors text-xs font-bold flex items-center justify-center w-8 h-8">
+                TT
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Payment methods */}
+        {/* Payment methods & Copyright */}
         <div className="border-t border-border/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">© 2023 YA Phones. All rights reserved.</p>
-          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-            <span className="bg-ya-dark px-2 py-1 rounded">VISA</span>
-            <span className="bg-ya-dark px-2 py-1 rounded">MasterCard</span>
-            <span className="bg-ya-dark px-2 py-1 rounded">PayPal</span>
-            <span className="bg-ya-dark px-2 py-1 rounded">Apple Pay</span>
+          <div>
+            <img
+              src="https://yaphones.shop/wp-content/uploads/2020/12/84b87e9ae2c147d18f4c03cbc50079e8-2.png"
+              alt="Payment methods"
+              className="h-8 object-contain"
+              loading="lazy"
+            />
           </div>
+          <p className="text-sm text-muted-foreground">Copyright © 2023. All Rights Reserved By Yaphones.</p>
         </div>
       </div>
     </footer>
