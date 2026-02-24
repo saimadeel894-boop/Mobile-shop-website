@@ -36,6 +36,7 @@ const Shop = () => {
     { name: "Samsung", value: "samsung", children: [] },
     { name: "Google Pixel", value: "pixel", children: [] },
     { name: "iPhone", value: "iphone", children: [] },
+    { name: "iPad", value: "ipad", children: [] },
   ];
 
   return (

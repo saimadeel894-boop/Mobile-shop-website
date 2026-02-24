@@ -6,7 +6,7 @@ export interface ProductVariant {
 export interface Product {
   id: string;
   name: string;
-  brand: "iphone" | "samsung" | "pixel";
+  brand: "iphone" | "samsung" | "pixel" | "ipad";
   condition: "new" | "used";
   series: string;
   priceRange: [number, number];
@@ -394,6 +394,33 @@ export const products: Product[] = [
     rating: 5,
     reviewCount: 1,
     description: "Samsung Galaxy Z Fold 6 foldable smartphone.",
+    isSale: true,
+  },
+  // ===== iPad =====
+  {
+    id: "ipad-pro-m4",
+    name: "iPad Pro M4, Brand New, Unlocked, Wi-Fi + Cellular",
+    brand: "ipad",
+    condition: "new",
+    series: "Pro M4",
+    priceRange: [450, 750],
+    variants: [
+      { storage: "256GB", price: 450 },
+      { storage: "512GB", price: 550 },
+      { storage: "1TB", price: 650 },
+      { storage: "2TB", price: 750 },
+    ],
+    colors: ["Silver", "Space Black"],
+    images: [
+      "/assets/ipad-pro-m4-1.jpeg",
+      "/assets/ipad-pro-m4-2.jpeg",
+      "/assets/ipad-pro-m4-3.jpeg",
+      "/assets/ipad-pro-m4-4.jpeg",
+      "/assets/ipad-pro-m4-5.jpeg",
+    ],
+    rating: 5,
+    reviewCount: 1,
+    description: "Apple iPad Pro M4 featuring the powerful M4 chip, Ultra Retina XDR OLED display, Apple Pencil Pro support, and Thunderbolt/USB 4 connectivity. The thinnest Apple product ever with pro-level performance for creative workflows.",
     isSale: true,
   },
 ];

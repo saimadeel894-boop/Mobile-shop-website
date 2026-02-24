@@ -32,6 +32,13 @@ const navItems = [
       { label: "Used Google Pixel", path: "/category/pixel/used" },
     ],
   },
+  {
+    label: "iPad",
+    path: "/category/ipad",
+    children: [
+      { label: "New iPads", path: "/category/ipad/new" },
+    ],
+  },
   { label: "Contact Us", path: "/contact" },
 ];
 
@@ -55,6 +62,7 @@ const Header = () => {
               <option>iPhones</option>
               <option>Samsung</option>
               <option>Google Pixel</option>
+              <option>iPad</option>
             </select>
             <input type="text" placeholder="Search products..." className="flex-1 px-4 py-2.5 bg-primary-foreground text-foreground text-sm outline-none" />
             <button className="bg-ya-blue px-4 hover:bg-ya-blue-light transition-colors">
