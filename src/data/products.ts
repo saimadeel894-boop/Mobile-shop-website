@@ -6,7 +6,7 @@ export interface ProductVariant {
 export interface Product {
   id: string;
   name: string;
-  brand: "iphone" | "samsung" | "pixel" | "ipad";
+  brand: "iphone" | "samsung" | "pixel" | "ipad" | "laptop";
   condition: "new" | "used";
   series: string;
   priceRange: [number, number];
@@ -421,6 +421,47 @@ export const products: Product[] = [
     rating: 5,
     reviewCount: 1,
     description: "Apple iPad Pro M4 featuring the powerful M4 chip, Ultra Retina XDR OLED display, Apple Pencil Pro support, and Thunderbolt/USB 4 connectivity. The thinnest Apple product ever with pro-level performance for creative workflows.",
+    isSale: true,
+  },
+  // ===== Laptops =====
+  {
+    id: "hp-elitebook-1030-g3",
+    name: "HP EliteBook 1030 x360 G3, 8th Gen Intel Core i7, 256GB SSD, 16GB RAM, Touchscreen, Light Keyboard",
+    brand: "laptop",
+    condition: "new",
+    series: "EliteBook",
+    priceRange: [250, 280],
+    variants: [
+      { storage: "256GB SSD", price: 280 },
+    ],
+    colors: ["Silver"],
+    images: [
+      "/assets/hp-elitebook-1030-g3-1.jpeg",
+      "/assets/hp-elitebook-1030-g3-2.jpeg",
+    ],
+    rating: 4.8,
+    reviewCount: 12,
+    description: "HP EliteBook 1030 x360 G3 featuring 8th Gen Intel Core i7 processor, 256GB SSD, 16GB RAM, touchscreen display, and light keyboard. A premium business convertible laptop.",
+    isSale: true,
+  },
+  {
+    id: "hp-elitebook-1030-g2",
+    name: "HP EliteBook x360 1030 G2, 7th Gen Intel Core i5, 256GB SSD, 8GB RAM, Touchscreen, Light Keypad",
+    brand: "laptop",
+    condition: "new",
+    series: "EliteBook",
+    priceRange: [200, 220],
+    variants: [
+      { storage: "256GB SSD", price: 220 },
+    ],
+    colors: ["Silver"],
+    images: [
+      "/assets/hp-elitebook-1030-g3-1.jpeg",
+      "/assets/hp-elitebook-1030-g3-2.jpeg",
+    ],
+    rating: 4.6,
+    reviewCount: 8,
+    description: "HP EliteBook x360 1030 G2 featuring 7th Gen Intel Core i5 processor, 256GB SSD, 8GB RAM, touchscreen display, and light keypad. A reliable business convertible laptop.",
     isSale: true,
   },
 ];
