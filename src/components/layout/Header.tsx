@@ -9,7 +9,7 @@ const navItems = [
   { label: "Home", path: "/" },
   { label: "Who we are", path: "/about" },
   {
-    label: "Iphones",
+    label: "iPhones",
     path: "/category/iphone",
     children: [
       { label: "New iPhones", path: "/category/iphone/new" },
@@ -56,15 +56,15 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <header className="bg-ya-dark text-primary-foreground sticky top-0 z-50">
+    <header className="glass-dark sticky top-0 z-50 text-primary-foreground">
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Apex Grade Phones" className="h-12 w-auto" />
         </Link>
 
         <div className="hidden md:flex flex-1 max-w-xl mx-6">
-          <div className="flex w-full rounded-md overflow-hidden">
-            <select className="bg-ya-navy text-primary-foreground text-sm px-3 py-2.5 border-r border-border/20 outline-none">
+          <div className="flex w-full rounded-full overflow-hidden ring-1 ring-white/10">
+            <select className="bg-ya-navy/80 text-primary-foreground text-sm px-4 py-2.5 border-r border-white/10 outline-none">
               <option>All</option>
               <option>iPhones</option>
               <option>Samsung</option>
@@ -73,34 +73,30 @@ const Header = () => {
               <option>Laptops</option>
             </select>
             <input type="text" placeholder="Search products..." className="flex-1 px-4 py-2.5 bg-primary-foreground text-foreground text-sm outline-none" />
-            <button className="bg-ya-blue px-4 hover:bg-ya-blue-light transition-colors">
+            <button className="bg-ya-blue px-5 hover:bg-ya-blue-light transition-colors">
               <Search className="h-4 w-4 text-primary-foreground" />
             </button>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-1 text-sm text-muted-foreground">
-            <ChevronDown className="h-4 w-4" />
-            <span>Recently Viewed Products</span>
-          </div>
+        <div className="flex items-center gap-5">
           <Link to="/account" className="hover:text-ya-blue-light transition-colors">
             <User className="h-5 w-5" />
           </Link>
           <Link to="/wishlist" className="relative hover:text-ya-blue-light transition-colors">
             <Heart className="h-5 w-5" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-ya-blue text-primary-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center">{wishlistCount}</span>
+              <span className="absolute -top-2 -right-2 bg-ya-blue text-primary-foreground text-[10px] rounded-full h-4 w-4 flex items-center justify-center font-bold">{wishlistCount}</span>
             )}
           </Link>
           <Link to="/cart" className="flex items-center gap-2 hover:text-ya-blue-light transition-colors">
             <div className="relative">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-ya-blue text-primary-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center">{totalItems}</span>
+                <span className="absolute -top-2 -right-2 bg-ya-blue text-primary-foreground text-[10px] rounded-full h-4 w-4 flex items-center justify-center font-bold">{totalItems}</span>
               )}
             </div>
-            <span className="text-sm font-semibold">${totalPrice.toFixed(2)}</span>
+            <span className="text-sm font-bold">${totalPrice.toFixed(2)}</span>
           </Link>
           <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -108,23 +104,22 @@ const Header = () => {
         </div>
       </div>
 
-      <nav className="bg-ya-navy border-t border-border/10">
+      <nav className="bg-ya-navy/50 border-t border-white/5">
         <div className="container mx-auto px-4">
           <ul className="hidden md:flex items-center gap-0">
-            {navItems.map((item, index) => (
-              <li key={item.label} className="relative group flex items-center"
+            {navItems.map((item) => (
+              <li key={item.label} className="relative group"
                 onMouseEnter={() => item.children && setOpenDropdown(item.label)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                {index > 0 && <span className="text-border/30 text-lg">|</span>}
-                <Link to={item.path} className={`flex items-center gap-1 px-4 py-3 text-sm font-medium hover:text-ya-blue transition-colors ${item.label === "Home" ? "text-ya-blue" : "text-primary-foreground"}`}>
+                <Link to={item.path} className="flex items-center gap-1 px-4 py-3 text-sm font-medium text-primary-foreground/80 hover:text-ya-blue transition-colors">
                   {item.label}
                   {item.children && <ChevronDown className="h-3 w-3" />}
                 </Link>
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 bg-ya-dark border border-border/20 rounded-md shadow-lg min-w-48 z-50">
+                  <div className="absolute top-full left-0 glass-dark rounded-xl shadow-2xl min-w-48 z-50 py-1 overflow-hidden">
                     {item.children.map((child) => (
-                      <Link key={child.path} to={child.path} className="block px-4 py-2.5 text-sm text-primary-foreground hover:bg-ya-navy hover:text-ya-blue transition-colors">{child.label}</Link>
+                      <Link key={child.path} to={child.path} className="block px-4 py-2.5 text-sm text-primary-foreground/80 hover:text-ya-blue hover:bg-white/5 transition-colors">{child.label}</Link>
                     ))}
                   </div>
                 )}
@@ -135,8 +130,8 @@ const Header = () => {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-ya-dark border-t border-border/10 px-4 py-4">
-          <div className="flex mb-4 rounded-md overflow-hidden">
+        <div className="md:hidden bg-ya-dark border-t border-white/5 px-4 py-4">
+          <div className="flex mb-4 rounded-full overflow-hidden ring-1 ring-white/10">
             <input type="text" placeholder="Search products..." className="flex-1 px-4 py-2.5 bg-primary-foreground text-foreground text-sm outline-none" />
             <button className="bg-ya-blue px-4"><Search className="h-4 w-4 text-primary-foreground" /></button>
           </div>
@@ -144,7 +139,7 @@ const Header = () => {
             <div key={item.label}>
               <Link to={item.path} className="block py-2.5 text-sm font-medium text-primary-foreground hover:text-ya-blue" onClick={() => setMobileOpen(false)}>{item.label}</Link>
               {item.children?.map((child) => (
-                <Link key={child.path} to={child.path} className="block py-2 pl-4 text-sm text-muted-foreground hover:text-ya-blue" onClick={() => setMobileOpen(false)}>{child.label}</Link>
+                <Link key={child.path} to={child.path} className="block py-2 pl-4 text-sm text-primary-foreground/50 hover:text-ya-blue" onClick={() => setMobileOpen(false)}>{child.label}</Link>
               ))}
             </div>
           ))}
