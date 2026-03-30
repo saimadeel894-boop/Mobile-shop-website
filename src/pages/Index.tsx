@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import HeroSlider from "@/components/home/HeroSlider";
+import TrustBadges from "@/components/home/TrustBadges";
 import ProductCategories from "@/components/home/ProductCategories";
 import WhoWeAre from "@/components/home/WhoWeAre";
 import HotProducts from "@/components/home/HotProducts";
@@ -11,6 +12,7 @@ const Index = () => {
   return (
     <Layout>
       <HeroSlider />
+      <TrustBadges />
       <ProductCategories />
       <WhoWeAre />
       <HotProducts />

@@ -1,95 +1,113 @@
 import { Link } from "react-router-dom";
-import { Star, Eye, Heart, ShoppingCart } from "lucide-react";
+import { Star, Eye, Heart, ShoppingCart, ArrowRight } from "lucide-react";
 import { getFeaturedProducts } from "@/data/products";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { motion } from "framer-motion";
 
 const HotProducts = () => {
   const products = getFeaturedProducts();
   const { toggleItem, isInWishlist } = useWishlist();
 
   return (
-    <section className="py-12 bg-background">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-foreground mb-2">Hot Products</h2>
-        <div className="w-16 h-1 bg-ya-blue mx-auto mb-2" />
-        <p className="text-center text-muted-foreground mb-8">You can see more categories in the navigation bar.</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="text-ya-blue text-sm font-bold tracking-widest uppercase">Featured</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2">Hot Products</h2>
+          <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
+            Handpicked devices at unbeatable wholesale prices
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map((product) => (
-            <div
+          {products.map((product, i) => (
+            <motion.div
               key={product.id}
-              className="group bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="group bg-card rounded-2xl border border-border overflow-hidden premium-card"
             >
-              <div className="relative aspect-square bg-secondary/50 flex items-center justify-center p-4">
+              <div className="relative aspect-square bg-secondary/30 flex items-center justify-center p-6">
                 {product.isSale && (
-                  <span className="absolute top-2 left-2 bg-ya-blue text-primary-foreground text-xs font-bold px-2 py-0.5 rounded z-10">
-                    Sale!
+                  <span className="absolute top-3 left-3 bg-ya-blue text-primary-foreground text-[10px] font-bold px-3 py-1 rounded-full z-10 tracking-wider">
+                    SALE
                   </span>
                 )}
                 <img
                   src={product.images[0]}
                   alt={product.name}
-                  className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
+                  className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-500"
                   loading="lazy"
                 />
                 {/* Hover actions */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button className="bg-background/90 rounded-full p-2 hover:bg-ya-blue hover:text-primary-foreground transition-colors shadow">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  <button className="bg-card/95 backdrop-blur rounded-full p-2.5 hover:bg-ya-blue hover:text-primary-foreground transition-colors shadow-lg">
                     <Eye className="h-4 w-4" />
                   </button>
                   <button
                     onClick={() => toggleItem(product.id)}
-                    className={`rounded-full p-2 transition-colors shadow ${
-                      isInWishlist(product.id) ? "bg-ya-blue text-primary-foreground" : "bg-background/90 hover:bg-ya-blue hover:text-primary-foreground"
+                    className={`rounded-full p-2.5 transition-colors shadow-lg backdrop-blur ${
+                      isInWishlist(product.id)
+                        ? "bg-ya-blue text-primary-foreground"
+                        : "bg-card/95 hover:bg-ya-blue hover:text-primary-foreground"
                     }`}
                   >
                     <Heart className="h-4 w-4" />
                   </button>
                   <Link
                     to={`/product/${product.id}`}
-                    className="bg-background/90 rounded-full p-2 hover:bg-ya-blue hover:text-primary-foreground transition-colors shadow"
+                    className="bg-card/95 backdrop-blur rounded-full p-2.5 hover:bg-ya-blue hover:text-primary-foreground transition-colors shadow-lg"
                   >
                     <ShoppingCart className="h-4 w-4" />
                   </Link>
                 </div>
               </div>
-              <div className="p-3">
+              <div className="p-4">
                 <Link to={`/product/${product.id}`} className="block">
-                  <h3 className="text-sm font-semibold text-card-foreground line-clamp-2 hover:text-ya-blue transition-colors">
+                  <h3 className="text-sm font-semibold text-card-foreground line-clamp-2 hover:text-ya-blue transition-colors leading-snug">
                     {product.name}
                   </h3>
                 </Link>
-                <div className="flex items-center gap-1 mt-1">
+                <div className="flex items-center gap-1 mt-2">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-3 w-3 ${i < product.rating ? "fill-ya-orange text-ya-orange" : "text-muted-foreground"}`}
+                      className={`h-3 w-3 ${
+                        i < product.rating ? "fill-ya-orange text-ya-orange" : "text-muted-foreground/30"
+                      }`}
                     />
                   ))}
-                  <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
+                  <span className="text-xs text-muted-foreground ml-1">({product.reviewCount})</span>
                 </div>
-                <p className="text-sm font-bold text-card-foreground mt-1">
+                <p className="text-base font-bold text-ya-blue mt-2">
                   ${product.priceRange[0].toFixed(2)} – ${product.priceRange[1].toFixed(2)}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-8 flex items-center justify-center gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-12 flex items-center justify-center gap-4"
+        >
           <Link
             to="/shop"
-            className="inline-block bg-ya-blue text-primary-foreground px-6 py-2.5 rounded text-sm font-semibold hover:bg-ya-blue-light transition-colors"
+            className="group inline-flex items-center gap-2 bg-ya-blue text-primary-foreground px-8 py-3.5 rounded-full text-sm font-bold hover:bg-ya-blue-light transition-all duration-300 hover:shadow-lg hover:shadow-ya-blue/30"
           >
-            Show All
+            View All Products
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-          <Link
-            to="/shop"
-            className="inline-block border border-ya-blue text-ya-blue px-6 py-2.5 rounded text-sm font-semibold hover:bg-ya-blue hover:text-primary-foreground transition-colors"
-          >
-            All Products
-          </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

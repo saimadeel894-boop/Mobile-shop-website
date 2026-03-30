@@ -1,36 +1,96 @@
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { Building2, Users, Package, Calendar } from "lucide-react";
 
 const stats = [
-  { label: "Since", value: "694", icon: "https://yaphones.shop/wp-content/uploads/2025/11/2e7a0633b7c57d6d034ba14a39dea47d.png" },
-  { label: "Our Factory(Square Meters)", value: "76+", icon: "https://yaphones.shop/wp-content/uploads/2025/11/789234ba4042539763784a07e10e517e.png" },
-  { label: "Staffs", value: "153+", icon: "https://yaphones.shop/wp-content/uploads/2025/11/58cc85ce742c0cbd1e71f9f1eabb320c.png" },
-  { label: "Annual Sales", value: "17,386,704+", icon: "https://yaphones.shop/wp-content/uploads/2025/11/9945d5d5cf6e259b3a6cc114b3417cbb.png" },
+  { label: "Founded", value: 1997, suffix: "", icon: Calendar, description: "Years of excellence" },
+  { label: "Factory Area", value: 694, suffix: "m²", icon: Building2, description: "Production facility" },
+  { label: "Team Members", value: 76, suffix: "+", icon: Users, description: "Skilled professionals" },
+  { label: "Annual Sales", value: 17, suffix: "M+", icon: Package, description: "Units shipped yearly" },
 ];
+
+const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const end = value;
+    const duration = 2000;
+    const step = Math.max(1, Math.floor(end / (duration / 16)));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [isInView, value]);
+
+  return (
+    <span ref={ref} className="text-3xl md:text-4xl font-bold gradient-text">
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+};
 
 const WhoWeAre = () => {
   return (
-    <section className="py-16 bg-secondary">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-foreground mb-2">Who we are</h2>
-        <div className="w-16 h-1 bg-ya-blue mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-center text-foreground mb-6">APEX GRADE PHONES GROUP</h3>
+    <section className="py-20 bg-ya-navy relative overflow-hidden">
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+        backgroundSize: '40px 40px'
+      }} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Tech is everywhere, so are we.
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="text-ya-blue text-sm font-bold tracking-widest uppercase">About Us</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mt-2">
+            APEX GRADE PHONES GROUP
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-2xl font-light text-primary-foreground/90 mb-4 italic">
+              "Tech is everywhere, so are we."
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              About Apex Grade Phones Group: Apex Grade Phones Company was founded in May 1997. It is a group company, Founded by a group of high-tech personnel in Shenzhen, China. Apex Grade Electronics Limited (Apex Grade Group Subsidiary) It was established in Hong Kong Special Administrative Region of China on October 24, 2006. It is composed of engineers who specialize in software and hardware development. Our company specializes in the design and production of mobile phones, Bluetooth and digital products, GPS/CAR DVR.
+            <p className="text-primary-foreground/60 leading-relaxed mb-6 text-base">
+              Apex Grade Phones Company was founded in May 1997. It is a group company, founded by a group of high-tech personnel in Shenzhen, China. Our company specializes in the design and production of mobile phones, digital products, and enterprise solutions — serving clients across 50+ countries worldwide.
             </p>
             <Link
               to="/about"
-              className="inline-block bg-ya-blue text-primary-foreground px-6 py-2.5 rounded text-sm font-semibold hover:bg-ya-blue-light transition-colors"
+              className="group inline-flex items-center gap-3 bg-ya-blue text-primary-foreground px-8 py-3.5 rounded-full text-sm font-bold hover:bg-ya-blue-light transition-all duration-300 hover:shadow-lg hover:shadow-ya-blue/30"
             >
-              About Us
+              Learn More About Us
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
-          </div>
-          <div className="aspect-video rounded-xl overflow-hidden bg-ya-dark">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="aspect-video rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl"
+          >
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/_-ro1UUFKOk"
@@ -38,16 +98,24 @@ const WhoWeAre = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-          </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center bg-background rounded-xl p-6 shadow-sm">
-              <img src={stat.icon} alt={stat.label} className="h-10 w-10 mx-auto mb-3 object-contain" loading="lazy" />
-              <div className="text-sm text-muted-foreground mb-1">{stat.label}</div>
-              <div className="text-2xl md:text-3xl font-bold text-ya-blue">{stat.value}</div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className="glass rounded-2xl p-6 text-center hover:bg-white/10 transition-colors"
+            >
+              <stat.icon className="h-8 w-8 text-ya-blue mx-auto mb-3" />
+              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              <div className="text-sm text-primary-foreground/80 font-medium mt-1">{stat.label}</div>
+              <div className="text-xs text-primary-foreground/40 mt-0.5">{stat.description}</div>
+            </motion.div>
           ))}
         </div>
       </div>
